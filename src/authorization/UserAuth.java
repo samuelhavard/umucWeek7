@@ -17,10 +17,6 @@ import java.sql.SQLException;
  */
 final public class UserAuth {
 
-    private Connection conn = null;
-    private ResultSet rs = null;
-    private PreparedStatement ps = null;
-
     private String username = "";
     private String password = "";
 
@@ -30,28 +26,30 @@ final public class UserAuth {
     }
 
     /**
-     * readDB uses the getConnection and getStatement methods to connect to the 
+     * readDB uses the getConnection and getStatement methods to connect to the
      * database and read the results of a prepared statement to a result set.
-     * 
-     * @return 
+     *
+     * @return
      * @throws SQLException
      * @throws UnsupportedEncodingException
      */
     public boolean readDB() throws SQLException, UnsupportedEncodingException {
+
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             System.out.println("Where is your MySQL JDBC Driver?");
         }
 
-        conn = DBConn.getConnection();
-        rs = getStatement(conn);
+        Connection conn = DBConn.getConnection();
+        ResultSet rs = getStatement(conn, username);
+
         if (rs.next()) {
             /*
              * get the unique salt from the database based off of the username
              */
             double salt = rs.getDouble("Salt");
-            
+
             /*
              * get the user input password and hash / salt it.
              */
@@ -71,20 +69,21 @@ final public class UserAuth {
             return false;
         }
     }
+
     /**
-     * The code uses the XOR "^" operator to compare integers for equality, 
-     * instead of the "==" operator.  The reason we need to use XOR instead 
-     * of the "==" operator to compare integers is that "==" is usually 
-     * translated/compiled/interpreted as a branch.  The branching makes the 
-     * code execute in a different amount of time depending on the equality of 
-     * the integers and the CPU's internal branch prediction state.
-     * 
-     * Comparing the hashes in "length-constant" time ensures that an attacker 
-     * cannot extract the hash of a password in an on-line system using a 
-     * timing attack, then crack it off-line.
-     * 
+     * The code uses the XOR "^" operator to compare integers for equality,
+     * instead of the "==" operator. The reason we need to use XOR instead of
+     * the "==" operator to compare integers is that "==" is usually
+     * translated/compiled/interpreted as a branch. The branching makes the code
+     * execute in a different amount of time depending on the equality of the
+     * integers and the CPU's internal branch prediction state.
+     *
+     * Comparing the hashes in "length-constant" time ensures that an attacker
+     * cannot extract the hash of a password in an on-line system using a timing
+     * attack, then crack it off-line.
+     *
      * source: https://crackstation.net/hashing-security.htm
-     * 
+     *
      * @param a is the byte array of the hashed user input
      * @param b is the byte array of the hashed password from the DB.
      * @return true if they are equal and false otherwise
@@ -102,11 +101,24 @@ final public class UserAuth {
      * @return a result set based off of user input
      * @throws SQLException
      */
-    private ResultSet getStatement(Connection conn) throws SQLException {
+    private ResultSet getStatement(Connection conn, String username) throws SQLException {
+        PreparedStatement ps;
+        ResultSet rs;
         String safeQuery = "SELECT * FROM project1.user WHERE Username=?";
         ps = conn.prepareStatement(safeQuery);
         ps.setString(1, username);
         rs = ps.executeQuery();
+        ps.close();
         return rs;
+    }
+
+    public int getAuth() throws SQLException {
+        int authLevel = 1;
+        Connection conn = DBConn.getConnection();
+        ResultSet rs = getStatement(conn, username);
+        if (rs.next()) {
+            authLevel = rs.getInt("AuthLevel");
+        }
+        return authLevel;
     }
 }

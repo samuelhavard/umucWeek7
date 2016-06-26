@@ -18,10 +18,6 @@ import java.util.logging.Logger;
 public class DBConn {
     private static Connection conn;
 
-    public DBConn() {
-        conn = null;
-    }
-
     /**
      * @return an instance of a database Connection using the DbModelSalt class
      * as parameters.
