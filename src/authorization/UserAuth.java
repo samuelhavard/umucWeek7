@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,6 +21,8 @@ final public class UserAuth {
 
     private String username = "";
     private String password = "";
+    PreparedStatement ps = null;
+    ResultSet rs = null;
 
     UserAuth(String username, String password) {
         this.username = username;
@@ -42,24 +46,25 @@ final public class UserAuth {
         }
 
         Connection conn = DBConn.getConnection();
-        ResultSet rs = getStatement(conn, username);
+        ResultSet resSet = getStatement(conn, username);
 
-        if (rs.next()) {
+        if (resSet.next()) {
             /*
              * get the unique salt from the database based off of the username
              */
-            double salt = rs.getDouble("Salt");
+            double salt = resSet.getDouble("Salt");
 
             /*
              * get the user input password and hash / salt it.
              */
-            String hashPass = PassCrypt.passCrypt(password, salt);
+            String hashPass;
+            hashPass = PassCrypt.passCrypt(password, salt);
 
             /*
              * convert both the user input text password that has been salted and hashed
              * and the stored salted and hashed password from the database and compare them. 
              */
-            String dbPass = rs.getString("Password");
+            String dbPass = resSet.getString("Password");
             byte[] hashByte = hashPass.getBytes("UTF8");
             byte[] passByte = dbPass.getBytes("UTF8");
 
@@ -101,23 +106,30 @@ final public class UserAuth {
      * @return a result set based off of user input
      * @throws SQLException
      */
-    private ResultSet getStatement(Connection conn, String username) throws SQLException {
-        PreparedStatement ps;
-        ResultSet rs;
+    private ResultSet getStatement(Connection conn, String username) {
+
         String safeQuery = "SELECT * FROM project1.user WHERE Username=?";
-        ps = conn.prepareStatement(safeQuery);
-        ps.setString(1, username);
-        rs = ps.executeQuery();
-        ps.close();
+        try {
+            ps = conn.prepareStatement(safeQuery);
+            ps.setString(1, username);
+            rs = ps.executeQuery();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserAuth.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return rs;
     }
 
+    /**
+     *
+     * @return the authorization level from the database as an integer
+     * @throws SQLException
+     */
     public int getAuth() throws SQLException {
-        int authLevel = 1;
+        int authLevel = 0;
         Connection conn = DBConn.getConnection();
-        ResultSet rs = getStatement(conn, username);
-        if (rs.next()) {
-            authLevel = rs.getInt("AuthLevel");
+        ResultSet resSet = getStatement(conn, username);
+        if (resSet.next()) {
+            authLevel = resSet.getInt("AuthLevel");
         }
         return authLevel;
     }

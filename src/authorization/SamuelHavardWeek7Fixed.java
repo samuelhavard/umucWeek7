@@ -1,6 +1,7 @@
 package authorization;
 
 import java.awt.CardLayout;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -41,6 +42,7 @@ public class SamuelHavardWeek7Fixed extends javax.swing.JFrame {
         username_field = new javax.swing.JTextField();
         password_field = new javax.swing.JTextField();
         btnSubmit = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         appPanel1 = new javax.swing.JPanel();
         btnLogout = new javax.swing.JButton();
         lblWeek6 = new javax.swing.JLabel();
@@ -53,12 +55,14 @@ public class SamuelHavardWeek7Fixed extends javax.swing.JFrame {
         appPanel4 = new javax.swing.JPanel();
         btnLogout3 = new javax.swing.JButton();
         lblWeek9 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         cardPanel.setLayout(new java.awt.CardLayout());
 
         loginPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Login"));
+        loginPanel.setPreferredSize(new java.awt.Dimension(500, 300));
 
         jLabel1.setText("Username:");
 
@@ -75,41 +79,50 @@ public class SamuelHavardWeek7Fixed extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Cancel");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
         loginPanel.setLayout(loginPanelLayout);
         loginPanelLayout.setHorizontalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(loginPanelLayout.createSequentialGroup()
+                .addContainerGap(135, Short.MAX_VALUE)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(username_field, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(loginPanelLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSubmit))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(password_field)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSubmit)
-                .addContainerGap())
+                        .addComponent(password_field, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(191, 191, 191))
         );
         loginPanelLayout.setVerticalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginPanelLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(130, 130, 130)
                 .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(username_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(username_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(password_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnSubmit)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(password_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSubmit)
+                    .addComponent(jButton1))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
 
         cardPanel.add(loginPanel, "loginCard");
@@ -132,7 +145,7 @@ public class SamuelHavardWeek7Fixed extends javax.swing.JFrame {
                 .addGroup(appPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnLogout)
                     .addComponent(lblWeek6))
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addContainerGap(380, Short.MAX_VALUE))
         );
         appPanel1Layout.setVerticalGroup(
             appPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,7 +154,7 @@ public class SamuelHavardWeek7Fixed extends javax.swing.JFrame {
                 .addComponent(lblWeek6)
                 .addGap(36, 36, 36)
                 .addComponent(btnLogout)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(312, Short.MAX_VALUE))
         );
 
         cardPanel.add(appPanel1, "appCard1");
@@ -164,7 +177,7 @@ public class SamuelHavardWeek7Fixed extends javax.swing.JFrame {
                 .addGroup(appPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnLogout1)
                     .addComponent(lblWeek7))
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addContainerGap(380, Short.MAX_VALUE))
         );
         appPanel2Layout.setVerticalGroup(
             appPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,10 +186,12 @@ public class SamuelHavardWeek7Fixed extends javax.swing.JFrame {
                 .addComponent(lblWeek7)
                 .addGap(36, 36, 36)
                 .addComponent(btnLogout1)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(312, Short.MAX_VALUE))
         );
 
         cardPanel.add(appPanel2, "appCard2");
+
+        appPanel3.setPreferredSize(new java.awt.Dimension(600, 400));
 
         btnLogout2.setText("Logout");
         btnLogout2.addActionListener(new java.awt.event.ActionListener() {
@@ -196,7 +211,7 @@ public class SamuelHavardWeek7Fixed extends javax.swing.JFrame {
                 .addGroup(appPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnLogout2)
                     .addComponent(lblWeek8))
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addContainerGap(380, Short.MAX_VALUE))
         );
         appPanel3Layout.setVerticalGroup(
             appPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,10 +220,12 @@ public class SamuelHavardWeek7Fixed extends javax.swing.JFrame {
                 .addComponent(lblWeek8)
                 .addGap(36, 36, 36)
                 .addComponent(btnLogout2)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(312, Short.MAX_VALUE))
         );
 
         cardPanel.add(appPanel3, "appCard3");
+
+        appPanel4.setPreferredSize(new java.awt.Dimension(600, 400));
 
         btnLogout3.setText("Logout");
         btnLogout3.addActionListener(new java.awt.event.ActionListener() {
@@ -219,25 +236,38 @@ public class SamuelHavardWeek7Fixed extends javax.swing.JFrame {
 
         lblWeek9.setText("Logged Into SDEV 325 App Week 6 Panel 4");
 
+        jButton2.setText("Launch Console");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout appPanel4Layout = new javax.swing.GroupLayout(appPanel4);
         appPanel4.setLayout(appPanel4Layout);
         appPanel4Layout.setHorizontalGroup(
             appPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(appPanel4Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, appPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(appPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnLogout3)
-                    .addComponent(lblWeek9))
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnLogout3)
+                .addContainerGap())
+            .addGroup(appPanel4Layout.createSequentialGroup()
+                .addGap(175, 175, 175)
+                .addComponent(lblWeek9)
+                .addContainerGap(217, Short.MAX_VALUE))
         );
         appPanel4Layout.setVerticalGroup(
             appPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, appPanel4Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(163, 163, 163)
                 .addComponent(lblWeek9)
-                .addGap(36, 36, 36)
-                .addComponent(btnLogout3)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 186, Short.MAX_VALUE)
+                .addGroup(appPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLogout3)
+                    .addComponent(jButton2))
+                .addContainerGap())
         );
 
         cardPanel.add(appPanel4, "appCard4");
@@ -269,6 +299,7 @@ public class SamuelHavardWeek7Fixed extends javax.swing.JFrame {
         String password = password_field.getText();
         
         UserAuth dbconn = new UserAuth(name, password);
+        String msg = "There is an issue with your account, please contact your System Admin.";
         boolean access;
         int auth;
         
@@ -286,7 +317,7 @@ public class SamuelHavardWeek7Fixed extends javax.swing.JFrame {
                     case 4: cardLayout.show(cardPanel, "appCard4");
                         break;
                     default: cardLayout.show(cardPanel, "loginCard");
-                    JOptionPane.showMessageDialog(null, "No authorization set");
+                    JOptionPane.showMessageDialog(null, msg);
                         break;
                 }
             } else {
@@ -298,24 +329,32 @@ public class SamuelHavardWeek7Fixed extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-        CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
-        cardLayout.show(cardPanel, "loginCard");
+        logout();
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnLogout1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout1ActionPerformed
-        CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
-        cardLayout.show(cardPanel, "loginCard");
+        logout();
     }//GEN-LAST:event_btnLogout1ActionPerformed
 
     private void btnLogout2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout2ActionPerformed
-        CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
-        cardLayout.show(cardPanel, "loginCard");
+        logout();
     }//GEN-LAST:event_btnLogout2ActionPerformed
 
     private void btnLogout3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout3ActionPerformed
-        CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
-        cardLayout.show(cardPanel, "loginCard");
+        logout();
     }//GEN-LAST:event_btnLogout3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            Runtime.getRuntime().exec("cmd.exe /c start");
+        } catch (IOException ex) {
+            Logger.getLogger(SamuelHavardWeek7Fixed.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -326,7 +365,13 @@ public class SamuelHavardWeek7Fixed extends javax.swing.JFrame {
             new SamuelHavardWeek7Fixed().setVisible(true);
         });
     }
-
+    
+    public void logout() {
+        CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
+        cardLayout.show(cardPanel, "loginCard");
+        username_field.setText("");
+        password_field.setText("");
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel appPanel1;
     private javax.swing.JPanel appPanel2;
@@ -338,6 +383,8 @@ public class SamuelHavardWeek7Fixed extends javax.swing.JFrame {
     private javax.swing.JButton btnLogout3;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JPanel cardPanel;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblWeek6;
