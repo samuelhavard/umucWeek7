@@ -103,6 +103,7 @@ final public class UserAuth {
 
     /**
      * @param conn uses connection to query database
+     * @param username queries the database for the username input by the user
      * @return a result set based off of user input
      * @throws SQLException
      */
