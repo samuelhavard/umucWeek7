@@ -434,23 +434,24 @@ public class SamuelHavardWeek7Fixed extends javax.swing.JFrame {
         if (user.getAuth() == 4) {
             cardLayout.show(cardPanel, "reAuth");
             lblUsername.setText(name);
-            password_field1.setText("");   
+            password_field1.setText("");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnSubmit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmit1ActionPerformed
-         String password = password_field1.getText();
-         UserAuth dbconn = new UserAuth(user.getUsername(), password);
-         CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
-         String msg = "There is an issue with your account, please contact your System Admin.";
-         
+        String name = user.getUsername();
+        String password = password_field1.getText();
+        UserAuth dbconn = new UserAuth(name, password);
+        CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
+        String msg = "There is an issue with your account, please contact your System Admin.";
+
         try {
-            if (dbconn.readDB()){
+            if (dbconn.readDB()) {
                 Runtime.getRuntime().exec("cmd.exe /c start");
                 cardLayout.show(cardPanel, "appCard4");
             } else {
                 JOptionPane.showMessageDialog(null, msg);
-            }           
+            }
         } catch (SQLException ex) {
             Logger.getLogger(SamuelHavardWeek7Fixed.class.getName()).log(Level.SEVERE, null, ex);
         } catch (UnsupportedEncodingException ex) {
@@ -474,7 +475,7 @@ public class SamuelHavardWeek7Fixed extends javax.swing.JFrame {
             new SamuelHavardWeek7Fixed().setVisible(true);
         });
     }
-    
+
     /**
      * logout moves the user from the current app screen to the login screen.
      */
