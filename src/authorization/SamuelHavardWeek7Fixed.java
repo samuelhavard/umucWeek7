@@ -147,21 +147,23 @@ public class SamuelHavardWeek7Fixed extends javax.swing.JFrame {
         appPanel1.setLayout(appPanel1Layout);
         appPanel1Layout.setHorizontalGroup(
             appPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, appPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnLogout)
+                .addContainerGap())
             .addGroup(appPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(appPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnLogout)
-                    .addComponent(lblWeek6))
-                .addContainerGap(380, Short.MAX_VALUE))
+                .addGap(180, 180, 180)
+                .addComponent(lblWeek6)
+                .addContainerGap(212, Short.MAX_VALUE))
         );
         appPanel1Layout.setVerticalGroup(
             appPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, appPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(183, Short.MAX_VALUE)
                 .addComponent(lblWeek6)
-                .addGap(36, 36, 36)
+                .addGap(166, 166, 166)
                 .addComponent(btnLogout)
-                .addContainerGap(312, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         cardPanel.add(appPanel1, "appCard1");
@@ -179,21 +181,23 @@ public class SamuelHavardWeek7Fixed extends javax.swing.JFrame {
         appPanel2.setLayout(appPanel2Layout);
         appPanel2Layout.setHorizontalGroup(
             appPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, appPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnLogout1)
+                .addContainerGap())
             .addGroup(appPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(appPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnLogout1)
-                    .addComponent(lblWeek7))
-                .addContainerGap(380, Short.MAX_VALUE))
+                .addGap(189, 189, 189)
+                .addComponent(lblWeek7)
+                .addContainerGap(203, Short.MAX_VALUE))
         );
         appPanel2Layout.setVerticalGroup(
             appPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, appPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(182, Short.MAX_VALUE)
                 .addComponent(lblWeek7)
-                .addGap(36, 36, 36)
+                .addGap(167, 167, 167)
                 .addComponent(btnLogout1)
-                .addContainerGap(312, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         cardPanel.add(appPanel2, "appCard2");
@@ -213,21 +217,23 @@ public class SamuelHavardWeek7Fixed extends javax.swing.JFrame {
         appPanel3.setLayout(appPanel3Layout);
         appPanel3Layout.setHorizontalGroup(
             appPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, appPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnLogout2)
+                .addContainerGap())
             .addGroup(appPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(appPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnLogout2)
-                    .addComponent(lblWeek8))
-                .addContainerGap(380, Short.MAX_VALUE))
+                .addGap(171, 171, 171)
+                .addComponent(lblWeek8)
+                .addContainerGap(221, Short.MAX_VALUE))
         );
         appPanel3Layout.setVerticalGroup(
             appPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, appPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(178, Short.MAX_VALUE)
                 .addComponent(lblWeek8)
-                .addGap(36, 36, 36)
+                .addGap(171, 171, 171)
                 .addComponent(btnLogout2)
-                .addContainerGap(312, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         cardPanel.add(appPanel3, "appCard3");
@@ -309,7 +315,7 @@ public class SamuelHavardWeek7Fixed extends javax.swing.JFrame {
         loginPanel1Layout.setHorizontalGroup(
             loginPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginPanel1Layout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
+                .addContainerGap(135, Short.MAX_VALUE)
                 .addGroup(loginPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(loginPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanel1Layout.createSequentialGroup()
@@ -341,7 +347,7 @@ public class SamuelHavardWeek7Fixed extends javax.swing.JFrame {
                 .addGroup(loginPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSubmit1)
                     .addComponent(jButton3))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(169, Short.MAX_VALUE))
         );
 
         cardPanel.add(loginPanel1, "reAuth");
